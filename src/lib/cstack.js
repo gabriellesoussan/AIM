@@ -3,11 +3,11 @@ import Contentstack from "contentstack";
 Contentstack.Utils.addEditableTags();
 
 const Stack = Contentstack.Stack({
-  api_key: process.env.API_KEY,
-  delivery_token: process.env.DELIVERY_TOKEN,
-  environment: process.env.ENVIRONMENT,
+  api_key: process.env.CONTENTSTACK_API_KEY,
+  delivery_token: process.env.CONTENTSTACK_DELIVERY_TOKEN,
+  environment: process.env.CONTENTSTACK_ENVIRONMENT,
   live_preview: {
-    preview_token: process.env.PREVIEW_TOKEN,
+    preview_token: process.env.CONTENTSTACK_PREVIEW_TOKEN,
     enable: true,
     host: "rest-preview.contentstack.com",
   },
