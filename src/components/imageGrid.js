@@ -1,6 +1,6 @@
 export default function ImageGrid({ content }) {
     return (
-        <div className="max-w-[1440px] mx-auto mt-32 mb-32 px-8 font-cinzel">
+        <div className="max-w-8xl mx-auto mt-32 mb-32 px-8 font-cinzel">
             <div className="flex flex-col md:grid  md:grid-cols-3 gap-8 auto-rows-fr">
                 {content?.images?.map((item, index) => (
                     <a
@@ -10,7 +10,7 @@ export default function ImageGrid({ content }) {
                         style={{ backgroundImage: `url(${item.image?.url})`}} {...item.image?.$?.url}
                     >
                         <div className="w-full h-full bg-black bg-opacity-20 flex items-center justify-center">
-                            <p className="text-white text-4xl font-bold text-center"> {item?.text}</p>
+                            <h3 className="text-white font-bold text-center"> {item?.text}</h3>
                         </div>
                     </a>
                 ))}

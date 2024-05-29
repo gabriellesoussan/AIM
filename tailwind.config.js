@@ -16,7 +16,21 @@ module.exports = {
                 "gradient-conic":
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             },
+            maxWidth: {
+                '8xl': '1440px'
+            },
+            animation: {
+                fadeIn: 'fadeIn 1s ease-in-out',
+            },
+            keyframes: theme => ({
+                fadeIn: {
+                    'from': { opacity: '0'},
+                    'to' : { opacity: '1'}
+                },
+            })
         },
     },
-    plugins: [],
+    plugins: [
+        
+    ],
 };

@@ -18,11 +18,9 @@ const cinzel = Cinzel({
 })
 
 export const metadata = {
-    title: "SE Demo",
+    title: "Red Panda Resort",
     description: "Contentstack SE Team Demo",
 };
-
-
 
 export default function RootLayout({ children, params: { locale } }) {
     return (

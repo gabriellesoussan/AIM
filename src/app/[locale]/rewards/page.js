@@ -2,25 +2,36 @@
 import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/24/outline';
+import Stack, { onEntryChange } from '@/lib/cstack'
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { Content } from "next/font/google";
 
 export default function Page({ params }) {
     const [isLoading, setIsLoading] = useState(true);
     const [dialogOpen, setDialogOpen] = useState(false);
+    const [category, setCategory] = useState('None');
+    const [entry, setEntry] = useState({});
+
+    const getContent = async () => {
+        const entry = await Stack.getElementByUrl('rewards', '/rewards', params.locale);
+        console.log('rewards', entry)
+        setEntry(entry);
+        setIsLoading(false);
+    }
 
     useEffect(() => {
-        setIsLoading(false);
-        //onEntryChange(getContent);
+        onEntryChange(getContent);
     }, []);
 
     function submit(e) {
         e.preventDefault();
-        localStorage.setItem('segment', 'wedding');
+        localStorage.setItem('segment', category);
         setDialogOpen(true);
     }
 
-    if (isLoading) return;
+    if(isLoading)
+        return;
 
     return (
         <div>
@@ -55,13 +66,9 @@ export default function Page({ params }) {
                                             <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
                                         </div>
                                         <div className="mt-3 text-center sm:mt-5">
-                                            <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                                                Submission successful
-                                            </Dialog.Title>
+                                            <Dialog.Title as="p" className="text-base font-semibold leading-6 text-gray-900">{entry.submit_modal.headline}</Dialog.Title>
                                             <div className="mt-2">
-                                                <p className="text-sm text-gray-500">
-                                                    Thank you for your submission. Our wedding specialist will contact you soon.
-                                                </p>
+                                                <p className="text-sm text-gray-500">{entry.submit_modal.body} </p>
                                             </div>
                                         </div>
                                     </div>
@@ -71,7 +78,7 @@ export default function Page({ params }) {
                                             className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                             onClick={() => setDialogOpen(false)}
                                         >
-                                            OK
+                                            {entry.submit_modal.button_text}
                                         </button>
                                     </div>
                                 </Dialog.Panel>
@@ -84,19 +91,19 @@ export default function Page({ params }) {
             <Header locale={params.locale} />
             <div className="flex max-w-7xl mx-auto px-8 gap-8">
                 <div className="w-1/2">
-                    <img src="https://images.contentstack.io/v3/assets/blt48306f59988eafb6/blt4710f7c323b5f688/6643e81266b81d1c1f33e87b/wedding_arch.jpeg" />
+                    <img src={entry.image?.url} />
                 </div>
 
                 <div className="w-1/2 my-auto">
-                    <p className="text-[3.5rem] font-cinzel tracking-widest text-neutral-700">WEDDINGS</p>
-                    <p className="text-[1.125rem] font-poppins font-light leading-8">Are you planning a destination wedding? Our wedding planners can assist! Complete the form below and we&apos;ll contact you and begin your journey.</p>
+                    <h1 className="text-neutral-700 uppercase">{entry.headline}</h1>
+                    <p>{entry.body}</p>
                 </div>
             </div>
 
             <div className="mt-16  max-w-7xl mx-auto px-8 font-poppins">
-                <div className="w-full  bg-[#F0F9FF]  text-black">
-                    <p className="text-3xl pt-5 text-center font-light">Schedule an appointment</p>
-                    <p className="text-[1.125rem] mt-5 text-center font-light">If you are ready to order or need help with ideas, we can help. We can be your guide for designs, flavors, colors, and more.</p>
+                <div className="w-full  bg-[#F0F9FF]  text-neutral-700">
+                    <p className="text-3xl pt-5 text-center font-light">{entry.form.headline}</p>
+                    <p className="text-[1.125rem] mt-5 text-center font-light">{entry.form.body}</p>
 
                     <div className="max-w-xl mx-auto">
                         <div className="space-y-12">
@@ -104,43 +111,39 @@ export default function Page({ params }) {
 
                                 <div className="mt-10">
 
-                                    <label htmlFor="username" className="block text-sm font-light leading-6 ">
-                                        Name
-                                    </label>
+                                    <label htmlFor="username" className="block text-sm font-light leading-6 ">{entry.form.name_label}</label>
                                     <div className="mt-2">
                                         <input
                                             type="text"
                                             name="name"
                                             id="name"
-                                            className="p-2 w-64 text-black"
+                                            className="p-2 w-64 text-neutral-700"
                                         />
                                     </div>
 
-                                    <label htmlFor="username" className="block text-sm font-light leading-6 mt-8">
-                                        Email
-                                    </label>
+                                    <label htmlFor="username" className="block text-sm font-light leading-6 mt-8">{entry.form.email_label}</label>
                                     <div className="mt-2">
                                         <input
                                             type="email"
                                             name="email"
                                             id="email"
-                                            className="p-2 w-64 text-black"
+                                            className="p-2 w-64 text-neutral-700"
                                             placeholder="jane.doe@example.com"
                                         />
                                     </div>
 
                                     <div className="mt-8">
-                                        <label htmlFor="about" className="block text-sm font-light leading-6 ">
-                                            Wedding date and details
-                                        </label>
+                                        <label htmlFor="about" className="block text-sm font-light leading-6 ">{entry.form.category_label}</label>
                                         <div className="mt-2">
-                                            <textarea
-                                                id="about"
-                                                name="about"
-                                                rows={3}
-                                                className="block w-full p-2 rounded-md border-0  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                defaultValue={''}
-                                            />
+                                            <select 
+                                                className="p-2 w-64"
+                                                value={category}
+                                                onChange={(e) => setCategory(e.target.value)}    
+                                            >
+                                                {entry.form.categories?.map((category, index) => (
+                                                    <option key={index} value={category.value}>{category.text}</option>
+                                                ))}
+                                            </select>
                                         </div>
                                     </div>
 

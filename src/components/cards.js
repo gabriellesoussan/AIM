@@ -5,15 +5,13 @@ export default function Cards({ content }) {
         return (
             <div className="md:w-full lg:w-[550px] m-5 flex flex-col  bg-white border border-gray-200 shadow " {...data.$.body}>
                 <div href="#" className="h-[300px] bg-cover bg-bottom" style={{ backgroundImage: `url(${data.image?.url})` }}></div>
-
                 <div className="p-5">
                     <a href="#">
-                        <h5 className="mt-8 font-medium text-3xl font-cinzel text-center tracking-widest text-neutral-700">
+                        <h2 className="mt-8 text-center text-neutral-700">
                             {data.headline}
-                        </h5>
-
+                        </h2>
                     </a>
-                    <p className="mx-5 mt-8 font-light font-poppins tracking-wide leading-7 text-gray-700 whitespace-break-spaces">
+                    <p className="m-5 mt-8 text-left whitespace-break-spaces leading-8 text-neutral-700">
                         {data.body}
                     </p>
                 </div>

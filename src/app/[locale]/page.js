@@ -8,6 +8,7 @@ import Hero from "@/components/hero";
 import ImageGrid from "@/components/imageGrid";
 import Reviews from "@/components/reviews";
 import TextBlock from "@/components/textBlock";
+import { PathParamsContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
 
 
 export default function Home({ params }) {
@@ -18,7 +19,7 @@ export default function Home({ params }) {
     const entry = await Stack.getElementByTypeWtihRefs(
       "homepage",
       params.locale,
-      ['modular_blocks.review.reference', 'modular_blocks.image_grid.images.page', 'hero_images.page']
+      ['modular_blocks.review.reference', 'modular_blocks.image_grid.images.page', 'hero.hero_banner', 'hero.hero_banner.page', 'modular_blocks.review.testimonials', 'modular_blocks.review.testimonials.reviews.review']
     );
     console.log('homepage', entry[0][0]);
     setEntry(entry[0][0]);
@@ -32,9 +33,9 @@ export default function Home({ params }) {
   if (isLoading) return;
   
   return (
-    <div>
+    <div data-pageref={entry.uid} data-contenttype="homepage" data-locale={params.locale}>
       
-      <Hero content={entry.hero_images} locale={params.locale}/>
+      <Hero content={entry.hero} locale={params.locale}/>
       {entry.modular_blocks.map((block, index) => {
         if (block.hasOwnProperty("text_block")) {
           return <TextBlock key={index} content={block.text_block} />;
@@ -49,7 +50,7 @@ export default function Home({ params }) {
         }
 
         if (block.hasOwnProperty("review")) {
-          return <Reviews key={index} content={block.review.reference[0]} />;
+          return <Reviews key={index} content={block.review.testimonials[0]} />;
         }
 
         if (block.hasOwnProperty("text_and_image")) {

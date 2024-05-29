@@ -1,12 +1,11 @@
 "use client"
 
-
 export default function PageHero({ content }) {
     return (
         <div>
 
             <div
-                className={`${content?.style === "Full Image" ? "" : "hidden"} ${content?.text_color === "Light" ? "text-white" : "text-black"} flex h-[800px] bg-neutral-600 bg-cover bg-top`}
+                className={`${content?.style === "Full Image" ? "" : "hidden"} ${content?.text_color === "Light" ? "text-white" : "text-neutral-700"} flex h-[800px] bg-neutral-600 bg-cover bg-top`}
                 style={{ backgroundImage: `url(${content?.image?.url})` }}
             >
                 {content?.layout === "Text Right" &&
