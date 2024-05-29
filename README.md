@@ -6,10 +6,10 @@ In your SE Demo Stack, navigate to Settings > Tokens > + Delivery Token
 Select `main` branch and the `preview` enviornment. Make sure 'Create Preview Token' is enabled. Click 'Generate Token' and copy tokens into `.env`. This is what your final `.env` should look like:
 
 ```ts
-API_KEY='YOUR_API_KEY'
-DELIVERY_TOKEN='YOUR_DELIVERY_TOKEN'
-ENVIRONMENT='preview'
-PREVIEW_TOKEN='YOUR_PREVIEW_TOKEN'
+CONTENTSTACK_API_KEY='YOUR_API_KEY'
+CONTENTSTACK_DELIVERY_TOKEN='YOUR_DELIVERY_TOKEN'
+CONTENTSTACK_ENVIRONMENT='preview'
+CONTENTSTACK_PREVIEW_TOKEN='YOUR_PREVIEW_TOKEN'
 ```
 
 #### Install Packages and Run Locally
