@@ -86,7 +86,7 @@ const navigation = [
           </div>
           <div className="mt-8 md:order-1 md:mt-0">
             <p onClick={resetSegment} className="text-center text-xs leading-5 text-gray-500 cursor-pointer">
-              &copy; 2024 Contentstack Inc. All rights reserved.
+              &copy; 2024 Contentstack Inc. All rights reserved. [v1.0.0]
             </p>
           </div>
         </div>
