@@ -49,7 +49,7 @@ strong {
     font-weight: 300;
     margin-bottom: 2rem;
 }
-.json-rte > li, ol, ul {
+.json-rte > :is(li, ol, ul) {
     margin-bottom: 2rem;
     margin-left: 2rem;
     font-size: 1.125rem;
@@ -75,7 +75,7 @@ strong {
     letter-spacing: .02rem;
  }
 
- .article > h1, h2, h3, h4, h5 {
+ .article > :is(h1, h2, h3, h4, h5) {
     font-family: var(--font-poppins);
     font-weight: 300;
     text-transform: none;
@@ -91,7 +91,7 @@ strong {
     list-style-type: disc;
  }
 
- .article > li, ol, ul {
+ .article > :is(li, ol, ul) {
     font-size: 1rem;
     letter-spacing: .02rem;
  }
