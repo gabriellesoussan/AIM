@@ -1,16 +1,14 @@
 import Header from "./header";
 
-export default function Hero({ content, locale }) {
+export default function Hero({ content, locale, withHeader }) {
   let segment = "default";
   if (typeof window !== "undefined") {
     segment = localStorage.getItem("segment") || "default";
     let found = false;
-    for(let x = 0; x < content?.length; x++){
-        if(content[x].segment === segment)
-            found = true;
+    for (let x = 0; x < content?.length; x++) {
+      if (content[x].segment === segment) found = true;
     }
-    if(!found)
-        segment = "default";
+    if (!found) segment = "default";
   }
 
   return (
@@ -20,14 +18,14 @@ export default function Hero({ content, locale }) {
           return (
             <div
               key={index}
-              className="bg-black relative isolate overflow-hidden h-screen flex"
+              className={withHeader ? "bg-black relative isolate overflow-hidden h-screen flex" : "bg-black relative isolate overflow-hidden h-[700px] flex"}
             >
               <img
                 className="absolute inset-0 -z-10 h-full w-full object-cover opacity-75"
                 src={hero.image?.url}
               />
 
-              <Header color="white" locale={locale} />
+              {withHeader ? <Header color="white" locale={locale} /> : <></>}
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-2xl">
                 <div className="text-center md:w-[42rem]">
                   <h1 className="mt-8 text-center text-white">{hero.header}</h1>

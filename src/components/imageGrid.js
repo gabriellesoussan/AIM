@@ -2,7 +2,7 @@ export default function ImageGrid({ content }) {
     return (
         <div className="max-w-8xl mx-auto mt-32 mb-32 px-8 font-cinzel">
             <div className="flex flex-col md:grid  md:grid-cols-3 gap-8 auto-rows-fr">
-                {content?.images?.map((item, index) => (
+                {content?.image?.map((item, index) => (
                     <a
                         href={item.page.length > 0 ? item.page[0].url : "#"}
                         key={index}

@@ -35,7 +35,7 @@ export default function Home({ params }) {
   return (
     <div data-pageref={entry.uid} data-contenttype="homepage" data-locale={params.locale}>
       
-      <Hero content={entry.hero} locale={params.locale}/>
+      <Hero content={entry.hero} locale={params.locale} withHeader={true}/>
       {entry.modular_blocks.map((block, index) => {
         if (block.hasOwnProperty("text_block")) {
           return <TextBlock key={index} content={block.text_block} />;

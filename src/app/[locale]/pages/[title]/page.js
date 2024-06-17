@@ -6,15 +6,17 @@ import Header from "@/components/header";
 import PageHero from "@/components/pageHero";
 import TextSection from "@/components/textSection";
 import People from "@/components/people";
+import Hero from "@/components/hero";
 
 export default function Page({ params }) {
   const [entry, setEntry] = useState({});
 
   const getContent = async () => {
-    const entry = await Stack.getElementByUrl(
+    const entry = await Stack.getElementByUrlWithRefs(
       "page",
       "/pages/" + params.title,
-      params.locale
+      params.locale,
+      ['modular_blocks.hero_banner.hero_banner']
     );
     console.log(entry);
     setEntry(entry);
@@ -23,6 +25,7 @@ export default function Page({ params }) {
   useEffect(() => {
     onEntryChange(getContent);
   }, []);
+  
 
   return (
     <div>
@@ -34,9 +37,14 @@ export default function Page({ params }) {
         }
         if (block.hasOwnProperty("people")) {
           return <People key={index} content={block.people} />;
-        } else if (block.hasOwnProperty("text_block")) {
+        }
+        if (block.hasOwnProperty("text_block")) {
           return <TextSection key={index} content={block.text_block} />;
         }
+        if (block.hasOwnProperty("hero_banner")) {
+          return <Hero key={index} content={block.hero_banner.hero_banner} locale={params.locale} withHeader={false}/>
+        }
+        
       })}
 
       <Footer />

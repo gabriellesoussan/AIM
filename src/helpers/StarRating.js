@@ -46,4 +46,5 @@ export default function StarRating({ rating, color, size }) {
             </div>
         )
     }
+
 }

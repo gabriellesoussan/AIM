@@ -34,7 +34,7 @@ export default function Page({ params }) {
             <div className="bg-white px-6 pt-8 pb-32 lg:px-8">
                 <div className="mx-auto max-w-3xl text-base leading-7 text-neutral-700">
                     <p className="mb-6 text-sm font-semibold leading-7 text-cyan-600 uppercase">
-                        ARTICLES / {entry?.headline}
+                        <a href="/en/articles">ARTICLES</a> / {entry?.headline}
                         {/* ARTICLES / {entry.taxonomies[0].term_uid} */}
                     </p>
                     <img src={entry?.banner_image?.url} className="mb-10"></img>
