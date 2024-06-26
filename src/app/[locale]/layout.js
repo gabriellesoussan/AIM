@@ -1,8 +1,6 @@
 import { Inter, Poppins, Cinzel } from "next/font/google";
 import "../globals.css";
 
-import "@contentstack/live-preview-utils/dist/main.css";
-
 const inter = Inter({ subsets: ["latin"] });
 
 const poppins = Poppins({
