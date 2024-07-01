@@ -16,6 +16,9 @@ const Stack = Contentstack.Stack({
 
 ContentstackLivePreview.init({
   stackSdk: Stack,
+  stackDetails: {
+    apiKey: process.env.CONTENTSTACK_API_KEY
+  },
   clientUrlParams: {
     protocol: "https",
     host: process.env.CONTENTSTACK_REGION == 'NA' ? "app.contentstack.com" : "eu-app.contentstack.com",
