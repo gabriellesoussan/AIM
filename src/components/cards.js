@@ -26,8 +26,8 @@ export default function Cards({ content }) {
 
     return (
         <div className="py-24 lg:flex lg:flex-row justify-center bg-sky-50">
-            {Card(content.card_1)}
-            {Card(content.card_2)}
+            {Card(content.card[0])}
+            {Card(content.card[1])}
         </div>
     );
 }
