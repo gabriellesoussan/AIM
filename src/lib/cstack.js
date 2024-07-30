@@ -21,7 +21,7 @@ ContentstackLivePreview.init({
   },
   clientUrlParams: {
     protocol: "https",
-    host: process.env.CONTENTSTACK_REGION == 'NA' ? "app.contentstack.com" : "eu-app.contentstack.com",
+    host: "app.contentstack.com",
     port: 443,
   },
 });
@@ -147,7 +147,7 @@ export default {
             resolve(entry);
           },
           function error(err) {
-            console.log("error id", id);
+            console.log("error id");
             reject(err);
           }
         );

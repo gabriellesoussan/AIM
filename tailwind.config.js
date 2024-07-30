@@ -22,6 +22,12 @@ module.exports = {
             animation: {
                 fadeIn: 'fadeIn 1s ease-in-out',
             },
+            colors: {
+                customGreen: '#0e5447'
+            },
+            backgroundColor: {
+                customBackground: '#b8e0d5'
+            },
             keyframes: theme => ({
                 fadeIn: {
                     'from': { opacity: '0'},

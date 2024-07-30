@@ -46,6 +46,7 @@ export default function Home({ params }) {
         }
 
         if (block.hasOwnProperty("image_grid")) {
+          console.log('has image grid')
           return <ImageGrid key={index} content={block.image_grid} />;
         }
 

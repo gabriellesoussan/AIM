@@ -43,14 +43,16 @@ export default function Header({ color, locale }) {
         (color === "white" ? "text-white" : "text-neutral-700")
       }
     >
-      <a href="/" className="my-auto">
+
+      <a href="/" className='h-36 w-24 my-auto'>DTCC</a>
+     {/*  <a href="/" className="my-auto">
         {color === "white" && (
-          <img className="h-6 w-auto" src={entry.light_logo?.url} />
+          <img className="h-20 w-auto" src={entry.light_logo?.url} />
         )}
         {color !== "white" && (
           <img className="h-6 w-auto" src={entry.dark_logo?.url} />
         )}
-      </a>
+      </a> */}
 
       <div className="flex lg:hidden">
         <button className="" onClick={() => setMenuOpen(true)}>

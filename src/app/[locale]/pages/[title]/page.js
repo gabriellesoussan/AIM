@@ -25,7 +25,7 @@ export default function Page({ params }) {
   }, []);
 
   return (
-    <div>
+    <div> 
       <Header locale={params.locale} />
 
       {entry?.modular_blocks?.map((block, index) => {
