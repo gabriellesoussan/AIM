@@ -32,6 +32,7 @@ export default {
       const Query = Stack.ContentType(type)
         .Entry(id)
         .language(locale ? locale : "en")
+        .includeFallback()
         .toJSON()
         .fetch()
         .then(
