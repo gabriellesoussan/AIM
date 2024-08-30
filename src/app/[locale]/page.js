@@ -8,6 +8,7 @@ import Hero from "@/components/hero";
 import ImageGrid from "@/components/imageGrid";
 import Reviews from "@/components/reviews";
 import TextBlock from "@/components/textBlock";
+import ProductBanner from "@/components/productBanner";
 import { PathParamsContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
 
 

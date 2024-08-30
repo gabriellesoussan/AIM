@@ -9,9 +9,9 @@ const Stack = Contentstack.Stack({
   live_preview: {
     preview_token: process.env.CONTENTSTACK_PREVIEW_TOKEN,
     enable: true,
-    host: process.env.CONTENTSTACK_REGION == 'NA' ? "rest-preview.contentstack.com" : "eu-rest-preview.contentstack.com"
+    host: process.env.CONTENTSTACK_REGION == 'NA' ? "rest-preview.contentstack.com" : "rest-preview.contentstack.com"
   },
-  region: process.env.CONTENTSTACK_REGION == 'NA' ? Contentstack.Region.NA : Contentstack.Region.EU
+  region: process.env.CONTENTSTACK_REGION == 'NA' ? Contentstack.Region.NA : Contentstack.Region.NA
 });
 
 ContentstackLivePreview.init({
@@ -21,7 +21,7 @@ ContentstackLivePreview.init({
   },
   clientUrlParams: {
     protocol: "https",
-    host: process.env.CONTENTSTACK_REGION == 'NA' ? "app.contentstack.com" : "eu-app.contentstack.com",
+    host: process.env.CONTENTSTACK_REGION == 'NA' ? "app.contentstack.com" : "app.contentstack.com",
     port: 443,
   },
 });
