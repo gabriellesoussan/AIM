@@ -56,6 +56,10 @@ export default function Home({ params }) {
         if (block.hasOwnProperty("text_and_image")) {
           return <HalfSquares key={index} content={block.text_and_image} />;
         }
+
+        if (block.hasOwnProperty("product_widget")) {
+          return <ProductBanner key={index} content={block.product_widget} />;
+        }
  
       })}
 

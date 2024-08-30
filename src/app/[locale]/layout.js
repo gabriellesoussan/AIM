@@ -16,7 +16,7 @@ const cinzel = Cinzel({
 })
 
 export const metadata = {
-    title: "Moving & Storage Company",
+    title: "Red Panda",
     description: "Contentstack SE Team Demo",
 };
 
